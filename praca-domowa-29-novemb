@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+int main(){
+	char j1, j2;
+	int t;
+	float answ;
+	printf("program zamienia temperatury\n");
+	printf("wpisz jednostki temperatury w krorych podajesz F dla Faryngejt, C dla celsjusza, K dla kielwina = ");
+	scanf(" %c", &j1);
+	printf("wpisz ilosc stopni = ");
+	scanf("%d", &t);
+	printf("wpisz jednostki na krore chcesz zmienic = ");
+	scanf(" %c", &j2);
+	printf("%c %d %c\n", j1, t, j2);
+	switch (j1){	
+		case 'C':
+			if (j2 == 'F'){
+				answ = 2*t + 32;
+				printf("odpowiedz = %f %c", answ, j2);
+			}
+			if (j2 == 'K'){
+				answ = t + 273;
+				printf("odpowiedz = %f %c", answ, j2);
+			}
+			break;
+		case 'F':
+			if (j2 == 'C'){
+				answ = (t-32)/2;
+				printf("odpowiedz = %f %c", answ, j2);
+			}
+			if (j2 == 'K'){
+				answ = (t+460)*5/9;
+				printf("odpowiedz = %f %c", answ, j2);
+			}
+			break;
+		case 'K':
+			if (j2 == 'C'){
+				answ = t-273;
+				printf("odpowiedz = %f %c", answ, j2);
+			}
+			if (j2 == 'F'){
+				answ = (t*1.8)-460;
+				printf("odpowiedz = %f %c", answ, j2);
+			}
+			break;
+	}  
+	return 0;
+          
+}
