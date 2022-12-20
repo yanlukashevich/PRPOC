@@ -1,0 +1,53 @@
+#include <stdio.h>
+
+/*struktury mogą kopiować tablicy LP=LP1
+tablica struktur
+funkcje mogą przyjmować i zwracać struktury 
+*/
+
+struct point{
+		float x,y,z;
+		int a;
+		int tab[10];
+	};
+
+void prints(struct point x){
+	int i;
+	printf("LP.x=%f LP.y=%f LP.z=%f LP.a=%d\n",x.x,x.y,x.z,x.a);
+	for(i=0;i<10;i++){
+		printf("%d\n", x.tab[i]);
+	}
+}
+
+struct point onestr(){
+	struct point x;
+	x.y=2;
+	x.x=2;
+	x.z=2;	
+	return x;
+}
+
+int main(){
+	
+	struct point LP, LP2, LP3;
+	struct point LP_t[10];
+	int i;
+	LP.x=2;
+	LP.y=6.5;
+	LP.a=6;
+	for(i=0;i<10;i++){
+		LP.tab[i]=i;
+	}
+	printf("wpisz LP.z");
+	scanf("%f", &LP.z);
+	prints(LP);
+	LP2=LP;
+	prints(LP2);
+	LP3=onestr();
+	prints(LP3);
+	for(i=0;i<10;i++){
+		LP_t[i].a=666666;
+		LP_t[i].tab[5]=666666;
+	}
+	
+}
