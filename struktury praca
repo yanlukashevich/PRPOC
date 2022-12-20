@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <math.h>
+
+struct atom{
+		int mass, lad;
+		float wsp[3];
+	};
+
+struct atom srodek(struct atom a, struct atom b){
+	struct atom c;
+	c.wsp[0]=(a.mass*a.wsp[0]+b.mass*b.wsp[0])/(a.mass+b.mass);
+	c.wsp[1]=(a.mass*a.wsp[1]+b.mass*b.wsp[1])/(a.mass+b.mass);
+	c.wsp[2]=(a.mass*a.wsp[2]+b.mass*b.wsp[2])/(a.mass+b.mass);
+	return c;
+}
+
+float potenc(struct atom a, float *wsp){
+	float r,E;
+	float b,c,d;
+	//obliczam odległości
+	d=(wsp[0]-a.wsp[0])*(wsp[0]-a.wsp[0]);
+	b=(wsp[1]-a.wsp[1])*(wsp[1]-a.wsp[1]);
+	c=(wsp[2]-a.wsp[2])*(wsp[2]-a.wsp[2]);
+	r=sqrt(d+b+c);
+	
+	E=9*a.lad*1.6/r;
+}
+
+int main(){
+	struct atom a,b,c;
+	int i;
+	float wsp[3];
+	a.mass=10;
+	a.lad=10;
+	a.wsp[0]=4;
+	a.wsp[1]=4;
+	a.wsp[2]=4;
+	b.mass=5;
+	b.lad=5;
+	b.wsp[0]=8;
+	b.wsp[1]=8;
+	b.wsp[2]=8;
+	
+	c=srodek(a,b);
+
+	printf("wprisz wszolzedne gdzie chcesz obliczyc potencjal(angstrem))\n");
+	for(i=0;i<3;i++){
+		scanf("%f", &wsp[i]);
+	}	
+	printf("potencial = %f\n", (potenc(a, wsp) + potenc(b, wsp)));
+		printf("srodek masy to wektor\n");
+	for(i=0;i<3;i++){
+		printf("%f\n",c.wsp[i]);
+	}
+	}
