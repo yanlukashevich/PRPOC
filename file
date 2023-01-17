@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+//r r+ w w+ a__do zapisu na końcu plika a+_zapis na konec i odczyt  
+
+int main(){
+	int znak;
+	FILE *plikopen=NULL;
+	FILE *plikclose=NULL;
+	
+	plikopen=fopen("newplik7.txt","r");
+	if(plikopen==NULL) {
+		perror("wystapil blad\n");
+		return 13;
+	}
+	plikclose=fopen("copiplik.txt","w");
+	if(plikclose==NULL) {
+		perror("wystapil blad\n");
+		return 13;
+	}
+	
+	while(feof(plikopen) == 0){
+		fprintf(plikclose,"%c",fgetc(plikopen));
+	}
+	
+	fclose(plikopen);
+	fclose(plikclose);
+	return 0;
+}
